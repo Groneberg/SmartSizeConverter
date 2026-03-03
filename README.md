@@ -2,7 +2,7 @@
 
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
-![Isar](https://img.shields.io/badge/Isar-Database-blueviolet?style=for-the-badge)
+![Storage](https://img.shields.io/badge/Storage-Shared_Preferences-blue?style=for-the-badge)
 
 ---
 
@@ -18,11 +18,11 @@ A minimalist, lightning-fast, and privacy-focused solution that ends the guesswo
 
 ### 🗺️ Roadmap
 * **Phase 1: The Foundation (MVP)**
-    * [ ] Setup: Flutter project structure with Isar DB integration.
+    * [x] Setup: Flutter project structure with Shared Preferences & Provider.
     * [ ] Data Engine: Core conversion logic for international shoe sizes (EU, US, UK, JP).
     * [ ] Core UI: Intuitive "Quick-Converter" screen.
 * **Phase 2: Personalization**
-    * [ ] User Profiles: Local storage of physical measurements (cm/inch).
+    * [x] User Profiles: Local storage of physical measurements.
     * [ ] Brand Overrides: Save specific brand experiences (e.g., "Size up for Adidas").
 * **Phase 3: Intelligence**
     * [ ] Smart Recommendations: Automated suggestions based on measurements.
@@ -58,11 +58,11 @@ Eine minimalistische, blitzschnelle und datenschutzfreundliche Lösung, die das 
 
 ### 🗺️ Roadmap
 * **Phase 1: Das Fundament (MVP)**
-    * [ ] Setup: Flutter Projektstruktur mit Isar DB Integration.
+    * [x] Setup: Flutter Projektstruktur mit Isar DB Integration.
     * [ ] Data Engine: Basis-Umrechnungslogik für internationale Schuhgrößen.
     * [ ] Core UI: Intuitive "Quick-Converter" Ansicht.
 * **Phase 2: Personalisierung**
-    * [ ] User Profiles: Speichern von Körpermaßen direkt auf dem Gerät.
+    * [x] Benutzerprofile: Lokale Speicherung physikalischer Messungen.
     * [ ] Brand Overrides: Spezifische Erfahrungen pro Marke speichern.
 * **Phase 3: Intelligence**
     * [ ] Smart Recommendations: Automatische Vorschläge basierend auf Maßen.
