@@ -1,5 +1,5 @@
 name: smart_size_converter
-description: "A new Flutter project."
+description: "A smart shoe and clothing size converter app."
 publish_to: 'none'
 version: 0.1.0
 
@@ -9,12 +9,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  isar: ^3.1.0+1
+  # Für einfache Daten-Speicherung (Profile, Einstellungen)
+  shared_preferences: ^2.5.3
+  # Falls du später doch Dateien oder Bilder speichern willst
   path_provider: ^2.1.5
+  # Standard Icons
+  cupertino_icons: ^1.0.8
+  provider: ^6.1.5+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  # Hilft dir, sauberen Code zu schreiben
   flutter_lints: ^5.0.0
 
 flutter:

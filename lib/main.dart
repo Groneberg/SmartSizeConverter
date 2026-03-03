@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:isar/isar.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_size_converter/src/data/services/shared_preferences_service.dart';
 
-void main() {
-  runApp(const MainApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final userSharedPreferences = SharedPreferencesService();
+  await userSharedPreferences.initialize();
+
+  runApp(
+    ChangeNotifierProvider<SharedPreferencesService>.value(
+      value: userSharedPreferences,
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
