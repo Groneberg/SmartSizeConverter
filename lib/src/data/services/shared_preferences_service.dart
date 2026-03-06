@@ -31,13 +31,13 @@ class SharedPreferencesService extends ChangeNotifier {
       final String? jsonString = _prefs.getString('user_profile');
       if (jsonString != null) {
         _currentProfile = UserProfile.fromJson(jsonString);
-        log("Profil erfolgreich geladen.");
+        log("Profile successfully loaded.");
       } else {
-        log("Kein Profil gefunden.");
+        log("No Profil found.");
       }
       notifyListeners();
     } catch (e) {
-      log("Fehler beim Laden des Profils: $e");
+      log("Error loading profile: $e");
     }
   }
 
@@ -51,12 +51,12 @@ class SharedPreferencesService extends ChangeNotifier {
       await _prefs.setString('user_profile', jsonString);
       
       _currentProfile = profile;
-      log("Profil gespeichert: $jsonString");
+      log("Profil saved: $jsonString");
       
       notifyListeners();
     } catch (e) {
-      log("Fehler beim Speichern des Profils: $e");
-      throw Exception("Speichern fehlgeschlagen");
+      log("Error saving profile: $e");
+      throw Exception("Failed to save profile: $e");
     }
   }
 

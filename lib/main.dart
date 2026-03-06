@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_size_converter/src/data/services/shared_preferences_service.dart';
+import 'package:smart_size_converter/src/features/Home/screen/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,14 +20,11 @@ void main() async {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
-  @override
+ @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      title: 'Perfect Fit',
+      home: const HomeScreen(), // Dein Startbildschirm
     );
   }
 }

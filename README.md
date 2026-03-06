@@ -28,6 +28,11 @@ A minimalist, lightning-fast, and privacy-focused solution that ends the guesswo
     * [ ] Smart Recommendations: Automated suggestions based on measurements.
     * [ ] Community Insights: Crowdsourced "True to Size" data.
 
+### 🛠️ Tech Stack
+- **Framework:** [Flutter](https://flutter.dev)
+- **Database:** [Shared Preferences](https://pub.dev/packages/shared_preferences) & Isar Database
+- **Architecture:** Clean Architecture / Service-Layer
+
 ### ⚙️ Installation (Dev-Quickstart)
 1.  **Clone the repository**
 2.  **Install dependencies:**
@@ -49,29 +54,44 @@ A minimalist, lightning-fast, and privacy-focused solution that ends the guesswo
 ## Deutsche Version
 
 ### 🌟 Vorwort & Marktpotenzial
-Im Jahr 2026 ist Online-Shopping der Standard, doch ein Problem bleibt ungelöst: **Das Größen-Chaos.** Über 70 % der Retouren im Modebereich entstehen durch Passform-Probleme. Das kostet Händler Milliarden, frustriert Kunden und belastet durch unnötige Logistik die Umwelt.
+Im Jahr 2026 ist Online-Shopping der weltweite Standard, doch ein massives Problem bleibt ungelöst: **Das Größen-Chaos.** Über 70 % der Retouren im Mode-E-Commerce entstehen durch Passform-Probleme. Das kostet Händler Milliarden an entgangenen Einnahmen, frustriert Kunden und belastet die Umwelt durch unnötige Logistik und CO₂-Emissionen erheblich.
 
-**Perfect Fit** setzt genau hier an. Anstatt nur statische Tabellen anzuzeigen, ist diese App ein persönlicher Begleiter, der mithilfe der **Isar Database** lokale Profile speichert, Markenunterschiede berücksichtigt und dem Nutzer in Sekunden sagt, welche Größe er *wirklich* braucht.
+**Perfect Fit** setzt genau hier an. Anstatt nur statische Tabellen anzuzeigen, dient diese App als persönlicher Einkaufsbegleiter. Mithilfe der **Isar Database** speichert sie lokale Profile, berücksichtigt markenspezifische Abweichungen (z. B. Nike vs. Adidas) und sagt dem Nutzer in Sekunden, welche Größe er *wirklich* braucht.
 
 ### 🚀 Vision
 Eine minimalistische, blitzschnelle und datenschutzfreundliche Lösung, die das Rätselraten beim Kleidungskauf beendet – **Offline-first & User-centered.**
 
 ### 🗺️ Roadmap
 * **Phase 1: Das Fundament (MVP)**
-    * [x] Setup: Flutter Projektstruktur mit Isar DB Integration.
-    * [ ] Data Engine: Basis-Umrechnungslogik für internationale Schuhgrößen.
+    * [x] Setup: Flutter Projektstruktur mit Shared Preferences & Provider.
+    * [ ] Data Engine: Kern-Umrechnungslogik für internationale Schuhgrößen (EU, US, UK, JP).
     * [ ] Core UI: Intuitive "Quick-Converter" Ansicht.
 * **Phase 2: Personalisierung**
     * [x] Benutzerprofile: Lokale Speicherung physikalischer Messungen.
-    * [ ] Brand Overrides: Spezifische Erfahrungen pro Marke speichern.
+    * [ ] Brand Overrides: Spezifische Markenerfahrungen speichern (z. B. "Eine Größe größer bei Adidas").
 * **Phase 3: Intelligence**
     * [ ] Smart Recommendations: Automatische Vorschläge basierend auf Maßen.
-    * [ ] Community Insights: Crowdsourcing von Passform-Erfahrungen.
+    * [ ] Community Insights: Crowdsourcing von "True to Size"-Daten.
 
 ### 🛠️ Tech Stack
 - **Framework:** [Flutter](https://flutter.dev)
-- **Database:** [Isar Database](https://isar.dev)
+- **Database:** [Shared Preferences](https://pub.dev/packages/shared_preferences) & Isar Database
 - **Architecture:** Clean Architecture / Service-Layer
+
+### ⚙️ Installation (Dev-Quickstart)
+1.  **Repository klonen**
+2.  **Abhängigkeiten installieren:**
+    ```bash
+    flutter pub get
+    ```
+3.  **Isar Code-Generator ausführen:**
+    ```bash
+    dart run build_runner build
+    ```
+4.  **App starten:**
+    ```bash
+    flutter run
+    ```
 
 *Entwickelt als Flutter Showcase Projekt.*
 ---
