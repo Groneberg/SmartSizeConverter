@@ -76,12 +76,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       service.saveProfile(profile).then((_) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Profil erfolgreich gespeichert!')),
+          const SnackBar(content: Text('Profile saved successfully!')),
         );
         Navigator.pop(context); // Zurück zum HomeScreen
       }).catchError((error) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Fehler beim Speichern.')),
+          const SnackBar(content: Text('Error while saving.')),
         );
       });
     }
@@ -91,7 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mein Profil'),
+        title: const Text('My Profil'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

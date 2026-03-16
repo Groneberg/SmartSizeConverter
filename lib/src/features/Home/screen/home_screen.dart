@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_size_converter/src/data/services/shared_preferences_service.dart';
 import 'package:smart_size_converter/src/features/Home/widgets/big_menu_button.dart';
 import 'package:smart_size_converter/src/features/Profile/screen/profile_screen.dart';
+import 'package:smart_size_converter/src/features/Tops/screen/tops_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -35,7 +36,6 @@ class HomeScreen extends StatelessWidget {
                   icon: Icons.person,
                   label: 'Profil',
                   onTap: () {
-                    // TODO: Klicklogik Profil
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -46,21 +46,26 @@ class HomeScreen extends StatelessWidget {
                 ),
                 BigMenuButton(
                   icon: Icons.checkroom, 
-                  label: 'Oberteil',
+                  label: 'Tops',
                   onTap: () {
-                    // TODO: Klicklogik Oberteil
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const TopsScreen(),
+                      ),
+                    );
                   },
                 ),
                 BigMenuButton(
                   icon: Icons.accessibility_new,
-                  label: 'Hose',
+                  label: 'Pants',
                   onTap: () {
                     // TODO: Klicklogik Hose
                   },
                 ),
                 BigMenuButton(
                   icon: Icons.snowshoeing,
-                  label: 'Schuh',
+                  label: 'Shoes',
                   onTap: () {
                     // TODO: Klicklogik Schuh
                   },
