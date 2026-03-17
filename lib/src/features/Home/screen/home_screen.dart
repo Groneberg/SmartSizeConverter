@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_size_converter/src/data/services/shared_preferences_service.dart';
+import 'package:smart_size_converter/src/features/Bottems/screen/bottoms_screen.dart';
 import 'package:smart_size_converter/src/features/Home/widgets/big_menu_button.dart';
 import 'package:smart_size_converter/src/features/Profile/screen/profile_screen.dart';
 import 'package:smart_size_converter/src/features/Tops/screen/tops_screen.dart';
@@ -60,7 +61,12 @@ class HomeScreen extends StatelessWidget {
                   icon: Icons.accessibility_new,
                   label: 'Pants',
                   onTap: () {
-                    // TODO: Klicklogik Hose
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const BottomsScreen(),
+                      ),
+                    );
                   },
                 ),
                 BigMenuButton(

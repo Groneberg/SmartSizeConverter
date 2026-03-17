@@ -87,4 +87,21 @@ class SizeConversionService extends ChangeNotifier {
       return null;
     }
   }
+
+  /// Finds a size entry by EU size for Bottoms
+  Map<String, dynamic>? findByEuSizeBottoms(String euValue, Gender gender) {
+    if (!_isLoaded) return null;
+
+    final String genderKey = gender == Gender.men
+        ? 'men_standard'
+        : 'women_plus';
+    final List<dynamic> data =
+        _sourceData!['converters']['bottoms'][genderKey]['data'];
+
+    try {
+      return data.firstWhere((row) => row['eu'].toString() == euValue);
+    } catch (e) {
+      return null;
+    }
+  }
 }
