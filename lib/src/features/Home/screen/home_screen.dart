@@ -4,6 +4,7 @@ import 'package:smart_size_converter/src/data/services/shared_preferences_servic
 import 'package:smart_size_converter/src/features/Bottems/screen/bottoms_screen.dart';
 import 'package:smart_size_converter/src/features/Home/widgets/big_menu_button.dart';
 import 'package:smart_size_converter/src/features/Profile/screen/profile_screen.dart';
+import 'package:smart_size_converter/src/features/Shoes/screen/shoes_screen.dart';
 import 'package:smart_size_converter/src/features/Tops/screen/tops_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -76,8 +77,7 @@ onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        // TODO: Create ShoesScreen and link here --- IGNORE ---
-                        builder: (context) => const BottomsScreen(),
+                        builder: (context) => const ShoesScreen(),
                       ),
                     );
                   },
