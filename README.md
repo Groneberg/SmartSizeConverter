@@ -19,8 +19,8 @@ A minimalist, lightning-fast, and privacy-focused solution that ends the guesswo
 ### 🗺️ Roadmap
 * **Phase 1: The Foundation (MVP)**
     * [x] Setup: Flutter project structure with Shared Preferences & Provider.
-    * [ ] Data Engine: Core conversion logic for international shoe sizes (EU, US, UK, JP).
-    * [ ] Core UI: Intuitive "Quick-Converter" screen.
+    * [x] Data Engine: Core conversion logic for international clothing and shoe sizes (EU, US, UK, Int'l).
+    * [x] Core UI: Intuitive "Quick-Converter" screens.
 * **Phase 2: Personalization**
     * [x] User Profiles: Local storage of physical measurements.
     * [ ] Brand Overrides: Save specific brand experiences (e.g., "Size up for Adidas").
@@ -64,8 +64,8 @@ Eine minimalistische, blitzschnelle und datenschutzfreundliche Lösung, die das 
 ### 🗺️ Roadmap
 * **Phase 1: Das Fundament (MVP)**
     * [x] Setup: Flutter Projektstruktur mit Shared Preferences & Provider.
-    * [ ] Data Engine: Kern-Umrechnungslogik für internationale Schuhgrößen (EU, US, UK, JP).
-    * [ ] Core UI: Intuitive "Quick-Converter" Ansicht.
+    * [x] Data Engine: Kern-Umrechnungslogik für internationale Kleidungs- und Schuhgrößen (EU, US, UK, Int'l).
+    * [x] Core UI: Intuitive "Quick-Converter" Ansichten.
 * **Phase 2: Personalisierung**
     * [x] Benutzerprofile: Lokale Speicherung physikalischer Messungen.
     * [ ] Brand Overrides: Spezifische Markenerfahrungen speichern (z. B. "Eine Größe größer bei Adidas").
