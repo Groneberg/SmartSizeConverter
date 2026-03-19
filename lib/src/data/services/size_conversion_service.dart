@@ -10,29 +10,28 @@ class SizeConversionService extends ChangeNotifier {
 
   bool get isLoaded => _isLoaded;
 
-  /// Loads the JSON data from assets
   Future<void> loadDefinitionData() async {
-    final String response = await rootBundle.loadString(
-      'assets/data/size_conversion_data.json',
-    );
+    final String response = await rootBundle.loadString('assets/data/size_conversion_data.json');
     _sourceData = json.decode(response);
     _isLoaded = true;
     notifyListeners();
   }
 
-  /// Generic finder logic for intervals. Now supports custom keys!
-  Map<String, dynamic>? _findMatch(
-    List<dynamic> data,
-    double value, {
-    String minKey = 'min_cm',
-    String maxKey = 'max_cm',
-  }) {
+  /// Universal converter for tops, bottoms and shoes based on chest/waist/foot length
+  Map<String, dynamic>? convert(String category, double value, Gender gender) {
+    if (!_isLoaded) return null;
+    
+    final String genderKey = gender.name;
+    final section = _sourceData!['converters'][category][genderKey];
+    if (section == null) return null;
+    
+    final List<dynamic> data = section['data'];
+    
     try {
       return data.firstWhere((row) {
-        if (row[minKey] == null || row[maxKey] == null) return false;
-
-        final double min = (row[minKey] as num).toDouble();
-        final double max = (row[maxKey] as num).toDouble();
+        
+        final double min = (row['min_cm'] ?? row['min_waist_cm'] ?? row['min_height_cm'] as num).toDouble();
+        final double max = (row['max_cm'] ?? row['max_waist_cm'] ?? row['max_height_cm'] as num).toDouble();
         return value >= min && value <= max;
       });
     } catch (e) {
@@ -40,64 +39,12 @@ class SizeConversionService extends ChangeNotifier {
     }
   }
 
-  /// Specific conversion for Tops
-  Map<String, dynamic>? convertTops(double chestCm, Gender gender) {
+  /// Finds a size entry based on EU size (for tops and bottoms)
+  Map<String, dynamic>? findByEu(String category, String euValue, Gender gender) {
     if (!_isLoaded) return null;
-
-    final String genderKey = gender == Gender.men ? 'men' : 'women';
-    final List<dynamic> data =
-        _sourceData!['converters']['tops'][genderKey]['data'];
-
-    return _findMatch(data, chestCm);
-  }
-
-  /// Specific conversion for Bottoms
-  Map<String, dynamic>? convertBottoms(double waistCm, Gender gender) {
-    if (!_isLoaded) return null;
-
-    final String genderKey = gender == Gender.men
-        ? 'men_standard'
-        : 'women_plus';
-    final List<dynamic> data =
-        _sourceData!['converters']['bottoms'][genderKey]['data'];
-
-    return _findMatch(data, waistCm, minKey: 'waist_min', maxKey: 'waist_max');
-  }
-
-  /// Specific conversion for Shoes
-  Map<String, dynamic>? convertShoes(double footCm) {
-    if (!_isLoaded) return null;
-    final List<dynamic> data = _sourceData!['converters']['shoes']['data'];
-    return _findMatch(data, footCm);
-  }
-
-  /// Finds a size entry by EU size for Tops
-  Map<String, dynamic>? findByEuSize(String euValue, Gender gender) {
-    if (!_isLoaded) return null;
-
-    final String genderKey = gender == Gender.men ? 'men' : 'women';
-    final List<dynamic> data =
-        _sourceData!['converters']['tops'][genderKey]['data'];
-
-    try {
-      return data.firstWhere((row) {
-        return row['eu'].toString() == euValue;
-      });
-    } catch (e) {
-      return null;
-    }
-  }
-
-  /// Finds a size entry by EU size for Bottoms
-  Map<String, dynamic>? findByEuSizeBottoms(String euValue, Gender gender) {
-    if (!_isLoaded) return null;
-
-    final String genderKey = gender == Gender.men
-        ? 'men_standard'
-        : 'women_plus';
-    final List<dynamic> data =
-        _sourceData!['converters']['bottoms'][genderKey]['data'];
-
+    final String genderKey = gender.name;
+    final List<dynamic> data = _sourceData!['converters'][category][genderKey]['data'];
+    
     try {
       return data.firstWhere((row) => row['eu'].toString() == euValue);
     } catch (e) {

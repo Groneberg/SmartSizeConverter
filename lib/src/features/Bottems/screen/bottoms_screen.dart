@@ -13,11 +13,11 @@ class BottomsScreen extends StatefulWidget {
 class _BottomsScreenState extends State<BottomsScreen> {
   Gender _selectedGender = Gender.men;
   
-  // Controller
   final TextEditingController _waistController = TextEditingController();
   final TextEditingController _euSizeController = TextEditingController();
   final TextEditingController _intlSizeController = TextEditingController();
-  final TextEditingController _extraInfoController = TextEditingController(); // Für Beinlänge/Hüfte
+  final TextEditingController _usSizeController = TextEditingController();
+  final TextEditingController _extraInfoController = TextEditingController(); 
   String _fitHint = '';
 
   @override
@@ -25,53 +25,58 @@ class _BottomsScreenState extends State<BottomsScreen> {
     _waistController.dispose();
     _euSizeController.dispose();
     _intlSizeController.dispose();
+    _usSizeController.dispose();
     _extraInfoController.dispose();
     super.dispose();
   }
 
   void _updateSizes(String value) {
-    if (value.isEmpty) return;
+    if (value.isEmpty) {
+      _clearFields();
+      return;
+    }
     final double? waist = double.tryParse(value.replaceAll(',', '.'));
     if (waist == null) return;
 
-    final result = context.read<SizeConversionService>().convertBottoms(waist, _selectedGender);
+    final result = context.read<SizeConversionService>().convert('bottoms', waist, _selectedGender);
 
     if (result != null) {
       setState(() {
         _euSizeController.text = result['eu'].toString();
         _intlSizeController.text = result['intl'] ?? '-';
+        _usSizeController.text = result['us']?.toString() ?? '-';
         _fitHint = result['category'] ?? ''; 
         
-        if (_selectedGender == Gender.men && result['leg_length'] != null) {
+        if (result['leg_length'] != null) {
            _extraInfoController.text = '${result['leg_length']} cm (Leg Length)';
-        } else if (_selectedGender == Gender.women && result['hip_max'] != null) {
-           _extraInfoController.text = 'up to ${result['hip_max']} cm (Hip)';
+        } else if (result['max_hip_cm'] != null) {
+           _extraInfoController.text = 'up to ${result['max_hip_cm']} cm (Hip)';
         } else {
            _extraInfoController.text = '-';
         }
       });
     } else {
-      _clearFields(keepWaist: true);
+      _clearFields(keepInput: true);
     }
   }
 
   void _updateFromEu(String value) {
     if (value.isEmpty) return;
 
-    final result = context.read<SizeConversionService>().findByEuSizeBottoms(value, _selectedGender);
+    final result = context.read<SizeConversionService>().findByEu('bottoms', value, _selectedGender);
 
     if (result != null) {
       setState(() {
-        // Mittelwert aus waist_min und waist_max berechnen
-        double avg = ((result['waist_min'] as num) + (result['waist_max'] as num)) / 2;
+        double avg = ((result['min_cm'] as num) + (result['max_cm'] as num)) / 2;
         _waistController.text = avg.toStringAsFixed(1);
         _intlSizeController.text = result['intl'] ?? '-';
+        _usSizeController.text = result['us']?.toString() ?? '-';
         _fitHint = result['category'] ?? '';
 
-        if (_selectedGender == Gender.men && result['leg_length'] != null) {
+        if (result['leg_length'] != null) {
            _extraInfoController.text = '${result['leg_length']} cm (Leg Length)';
-        } else if (_selectedGender == Gender.women && result['hip_max'] != null) {
-           _extraInfoController.text = 'up to ${result['hip_max']} cm (Hip)';
+        } else if (result['max_hip_cm'] != null) {
+           _extraInfoController.text = 'up to ${result['max_hip_cm']} cm (Hip)';
         } else {
            _extraInfoController.text = '-';
         }
@@ -79,11 +84,12 @@ class _BottomsScreenState extends State<BottomsScreen> {
     }
   }
 
-  void _clearFields({bool keepWaist = false}) {
+  void _clearFields({bool keepInput = false}) {
     setState(() {
-      if (!keepWaist) _waistController.clear();
+      if (!keepInput) _waistController.clear();
       _euSizeController.clear();
       _intlSizeController.clear();
+      _usSizeController.clear();
       _extraInfoController.clear();
       _fitHint = 'Size not found';
     });
@@ -120,11 +126,11 @@ class _BottomsScreenState extends State<BottomsScreen> {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
-            // Gender Toggle
             SegmentedButton<Gender>(
               segments: const [
                 ButtonSegment(value: Gender.women, label: Text('Women'), icon: Icon(Icons.woman)),
                 ButtonSegment(value: Gender.men, label: Text('Men'), icon: Icon(Icons.man)),
+                ButtonSegment(value: Gender.kids, label: Text('Kids'), icon: Icon(Icons.child_care)),
               ],
               selected: {_selectedGender},
               onSelectionChanged: (set) {
@@ -162,6 +168,17 @@ class _BottomsScreenState extends State<BottomsScreen> {
               ),
               keyboardType: TextInputType.text,
               onChanged: _updateFromEu,
+            ),
+            const SizedBox(height: 16),
+
+            TextField(
+              controller: _usSizeController,
+              decoration: const InputDecoration(
+                labelText: 'US Size',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.flag_circle_outlined),
+              ),
+              readOnly: true,
             ),
             const SizedBox(height: 16),
 

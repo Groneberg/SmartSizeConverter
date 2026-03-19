@@ -72,8 +72,14 @@ class HomeScreen extends StatelessWidget {
                 BigMenuButton(
                   icon: Icons.snowshoeing,
                   label: 'Shoes',
-                  onTap: () {
-                    // TODO: Klicklogik Schuh
+onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        // TODO: Create ShoesScreen and link here --- IGNORE ---
+                        builder: (context) => const BottomsScreen(),
+                      ),
+                    );
                   },
                 ),
               ],

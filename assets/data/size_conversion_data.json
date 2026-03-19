@@ -1,87 +1,104 @@
 {
-  "version": "1.1",
-  "last_updated": "2024-05-22",
+  "version": "1.8",
+  "last_updated": "2024-05-23",
   "converters": {
     "shoes": {
       "measure_unit": "cm",
-      "description": "Merged table for babies, children, women, men, and oversizes.",
-      "data": [
-        { "eu": 16, "min_cm": 9.4, "max_cm": 10.0, "uk": 0.5, "us_kids": 1.0, "category": "Baby" },
-        { "eu": 17, "min_cm": 10.1, "max_cm": 10.7, "uk": 1.5, "us_kids": 2.0, "category": "Baby" },
-        { "eu": 18, "min_cm": 10.8, "max_cm": 11.4, "uk": 2.0, "us_kids": 2.5, "category": "Baby" },
-        { "eu": 19, "min_cm": 11.5, "max_cm": 12.0, "uk": 3.0, "us_kids": 3.5, "category": "Baby" },
-        { "eu": 20, "min_cm": 12.1, "max_cm": 12.6, "uk": 3.5, "us_kids": 4.5, "category": "Toddler" },
-        { "eu": 22, "min_cm": 13.3, "max_cm": 13.8, "uk": 5.5, "us_kids": 6.0, "category": "Toddler" },
-        { "eu": 24, "min_cm": 14.5, "max_cm": 15.0, "uk": 7.0, "us_kids": 8.0, "category": "Child" },
-        { "eu": 26, "min_cm": 15.7, "max_cm": 16.3, "uk": 8.5, "us_kids": 9.5, "category": "Child" },
-        { "eu": 28, "min_cm": 17.0, "max_cm": 17.5, "uk": 10.0, "us_kids": 11.0, "category": "Child" },
-        { "eu": 30, "min_cm": 18.3, "max_cm": 18.9, "uk": 11.5, "us_kids": 13.0, "category": "Child" },
-        { "eu": 32, "min_cm": 19.7, "max_cm": 20.3, "uk": 13.0, "us_kids": 1.5, "category": "Child/Junior" },
-        { "eu": 34, "min_cm": 21.1, "max_cm": 21.7, "uk": 2.0, "us_women": 3.5, "category": "Junior/Women" },
-        { "eu": 35, "min_cm": 21.8, "max_cm": 22.4, "uk": 2.5, "us_women": 4.5, "us_men": 3.5, "category": "Standard" },
-        { "eu": 38, "min_cm": 23.8, "max_cm": 24.4, "uk": 5.0, "us_women": 7.5, "us_men": 6.0, "category": "Standard" },
-        { "eu": 42, "min_cm": 26.5, "max_cm": 27.0, "uk": 8.0, "us_women": 11.5, "us_men": 9.0, "category": "Standard" },
-        { "eu": 46, "min_cm": 29.1, "max_cm": 29.7, "uk": 11.0, "us_men": 12.0, "category": "Standard" },
-        { "eu": 48, "min_cm": 30.5, "max_cm": 31.0, "uk": 13.0, "us_men": 14.0, "category": "Oversize" },
-        { "eu": 50, "min_cm": 31.8, "max_cm": 32.4, "uk": 14.5, "us_men": 15.5, "category": "Oversize" },
-        { "eu": 55, "min_cm": 34.8, "max_cm": 35.4, "uk": 19.0, "us_men": 20.0, "category": "Oversize" }
-      ]
+      "men": {
+        "data": [
+          { "eu": 38, "min_cm": 23.8, "max_cm": 24.4, "uk": 5.0, "us": 6.0, "category": "Small" },
+          { "eu": 39, "min_cm": 24.5, "max_cm": 25.0, "uk": 5.5, "us": 6.5, "category": "Small" },
+          { "eu": 40, "min_cm": 25.1, "max_cm": 25.7, "uk": 6.5, "us": 7.5, "category": "Standard" },
+          { "eu": 41, "min_cm": 25.8, "max_cm": 26.4, "uk": 7.0, "us": 8.0, "category": "Standard" },
+          { "eu": 42, "min_cm": 26.5, "max_cm": 27.0, "uk": 8.0, "us": 9.0, "category": "Standard" },
+          { "eu": 43, "min_cm": 27.1, "max_cm": 27.7, "uk": 9.0, "us": 10.0, "category": "Standard" },
+          { "eu": 44, "min_cm": 27.8, "max_cm": 28.4, "uk": 9.5, "us": 10.5, "category": "Standard" },
+          { "eu": 45, "min_cm": 28.5, "max_cm": 29.0, "uk": 10.5, "us": 11.5, "category": "Standard" },
+          { "eu": 46, "min_cm": 29.1, "max_cm": 29.7, "uk": 11.0, "us": 12.0, "category": "Standard" },
+          { "eu": 48, "min_cm": 30.5, "max_cm": 31.0, "uk": 13.0, "us": 14.0, "category": "Oversize" },
+          { "eu": 50, "min_cm": 31.8, "max_cm": 32.4, "uk": 14.5, "us": 15.5, "category": "Oversize" },
+          { "eu": 55, "min_cm": 34.8, "max_cm": 35.4, "uk": 19.0, "us": 20.0, "category": "Oversize" }
+        ]
+      },
+      "women": {
+        "data": [
+          { "eu": 35, "min_cm": 21.8, "max_cm": 22.4, "uk": 2.5, "us": 4.5, "category": "Small" },
+          { "eu": 36, "min_cm": 22.5, "max_cm": 23.0, "uk": 3.5, "us": 5.5, "category": "Standard" },
+          { "eu": 37, "min_cm": 23.1, "max_cm": 23.7, "uk": 4.0, "us": 6.5, "category": "Standard" },
+          { "eu": 38, "min_cm": 23.8, "max_cm": 24.4, "uk": 5.0, "us": 7.5, "category": "Standard" },
+          { "eu": 39, "min_cm": 24.5, "max_cm": 25.0, "uk": 5.5, "us": 8.5, "category": "Standard" },
+          { "eu": 40, "min_cm": 25.1, "max_cm": 25.7, "uk": 6.5, "us": 9.0, "category": "Standard" },
+          { "eu": 41, "min_cm": 25.8, "max_cm": 26.4, "uk": 7.0, "us": 10.5, "category": "Standard" },
+          { "eu": 42, "min_cm": 26.5, "max_cm": 27.0, "uk": 8.0, "us": 11.5, "category": "Standard" },
+          { "eu": 44, "min_cm": 28.1, "max_cm": 28.7, "uk": 9.5, "us": 13.0, "category": "Oversize" }
+        ]
+      },
+      "kids": {
+        "data": [
+          { "eu": 16, "min_cm": 9.4, "max_cm": 10.0, "uk": 0.5, "us": 1.0, "category": "Baby" },
+          { "eu": 20, "min_cm": 12.1, "max_cm": 12.6, "uk": 3.5, "us": 4.5, "category": "Toddler" },
+          { "eu": 26, "min_cm": 15.7, "max_cm": 16.3, "uk": 8.5, "us": 9.5, "category": "Child" },
+          { "eu": 32, "min_cm": 19.7, "max_cm": 20.3, "uk": 13.0, "us": 1.5, "category": "Junior" }
+        ]
+      }
     },
     "tops": {
       "men": {
         "measure_type": "chest_circumference",
         "data": [
-          { "intl": "XXS/XS", "eu": 40, "min_cm": 80, "max_cm": 87, "category": "Slim/Small" },
-          { "intl": "S", "eu": 44, "min_cm": 88, "max_cm": 95, "category": "Standard" },
-          { "intl": "M", "eu": 48, "min_cm": 96, "max_cm": 103, "category": "Standard" },
-          { "intl": "L", "eu": 52, "min_cm": 104, "max_cm": 111, "category": "Standard" },
-          { "intl": "XL", "eu": 56, "min_cm": 112, "max_cm": 115, "category": "Standard" },
-          { "intl": "XXL", "eu": 58, "min_cm": 116, "max_cm": 123, "category": "Plus" },
-          { "intl": "3XL", "eu": 62, "min_cm": 124, "max_cm": 131, "category": "Big Sizes" },
-          { "intl": "8XL", "eu": 78, "min_cm": 172, "max_cm": 181, "category": "Extreme Big" }
+          { "intl": "XS", "eu": 42, "min_cm": 84, "max_cm": 87, "us": "32-33", "category": "Slim Fit" },
+          { "intl": "S", "eu": 44, "min_cm": 88, "max_cm": 91, "us": "34-35", "category": "Regular" },
+          { "intl": "M", "eu": 48, "min_cm": 96, "max_cm": 99, "us": "38-39", "category": "Regular" },
+          { "intl": "L", "eu": 52, "min_cm": 104, "max_cm": 107, "us": "42-43", "category": "Regular" },
+          { "intl": "XL", "eu": 56, "min_cm": 112, "max_cm": 115, "us": "46-47", "category": "Plus Size" },
+          { "intl": "XXL", "eu": 60, "min_cm": 120, "max_cm": 123, "us": "50-51", "category": "Plus Size" },
+          { "intl": "4XL", "eu": 68, "min_cm": 136, "max_cm": 139, "us": "58-59", "category": "Oversize" },
+          { "intl": "8XL", "eu": 84, "min_cm": 168, "max_cm": 171, "us": "74-75", "category": "Oversize" }
         ]
       },
       "women": {
         "measure_type": "chest_circumference",
         "data": [
-          { "intl": "XXS", "eu": 32, "min_cm": 74, "max_cm": 77 },
-          { "intl": "XS", "eu": 34, "min_cm": 78, "max_cm": 81 },
-          { "intl": "S", "eu": 36, "min_cm": 82, "max_cm": 85 },
-          { "intl": "M", "eu": 38, "min_cm": 86, "max_cm": 89 },
-          { "intl": "L", "eu": 40, "min_cm": 90, "max_cm": 93 },
-          { "intl": "XL", "eu": 42, "min_cm": 94, "max_cm": 97 },
-          { "intl": "XXL+", "eu": "48-64", "min_cm": 108, "max_cm": 161, "category": "Plus Size" }
+          { "intl": "XXS", "eu": 32, "min_cm": 74, "max_cm": 77, "us": "0", "category": "Petite" },
+          { "intl": "XS", "eu": 34, "min_cm": 78, "max_cm": 81, "us": "2", "category": "Fitted" },
+          { "intl": "S", "eu": 36, "min_cm": 82, "max_cm": 85, "us": "4-6", "category": "Regular" },
+          { "intl": "M", "eu": 38, "min_cm": 86, "max_cm": 89, "us": "8-10", "category": "Regular" },
+          { "intl": "L", "eu": 40, "min_cm": 90, "max_cm": 93, "us": "12-14", "category": "Regular" },
+          { "intl": "XL", "eu": 42, "min_cm": 94, "max_cm": 97, "us": "16", "category": "Plus Size" },
+          { "intl": "XXL", "eu": 44, "min_cm": 98, "max_cm": 102, "us": "18", "category": "Plus Size" },
+          { "intl": "3XL", "eu": 48, "min_cm": 110, "max_cm": 115, "us": "22-24", "category": "Oversize" },
+          { "intl": "6XL", "eu": 68, "min_cm": 160, "max_cm": 165, "us": "38", "category": "Oversize" }
         ]
       },
       "kids": {
-        "measure_type": "body_height_to_chest",
+        "measure_type": "height",
         "data": [
-          { "eu": "98/104", "age": "2.5-4Y", "max_height": 104, "chest_min": 54, "chest_max": 56 },
-          { "eu": "110/116", "age": "5-6Y", "max_height": 116, "chest_min": 57, "chest_max": 60 },
-          { "eu": "134/140", "age": "9-10Y", "max_height": 140, "chest_min": 65, "chest_max": 71 },
-          { "eu": "170/176", "age": "15-16Y", "max_height": 176, "chest_min": 87, "chest_max": 92 }
+          { "eu": "98/104", "min_cm": 98, "max_cm": 104, "us": "4-5", "category": "Toddler" },
+          { "eu": "110/116", "min_cm": 110, "max_cm": 116, "us": "6", "category": "Child" },
+          { "eu": "134/140", "min_cm": 134, "max_cm": 140, "us": "10", "category": "Junior" },
+          { "eu": "170/176", "min_cm": 170, "max_cm": 176, "us": "16-18", "category": "Teen" }
         ]
       }
     },
     "bottoms": {
-      "men_standard": {
+      "men": {
         "measure_type": "waist_circumference",
         "data": [
-          { "eu": 44, "intl": "XS", "waist_min": 70, "waist_max": 73, "leg_length": 78 },
-          { "eu": 48, "intl": "M", "waist_min": 78, "waist_max": 81, "leg_length": 80 },
-          { "eu": 54, "intl": "XL", "waist_min": 90, "waist_max": 94, "leg_length": 83 },
-          { "eu": 58, "intl": "3XL", "waist_min": 106, "waist_max": 115, "category": "Oversize" },
-          { "eu": 78, "intl": "8XL", "waist_min": 156, "waist_max": 165, "category": "Oversize" }
-        ],
-        "special_logic": {
-          "short_sizes": "Size / 2 (e.g. 50 -> 25) for larger waist.",
-          "long_sizes": "Size * 2 + 2 (e.g. 50 -> 102) for slim/tall men."
-        }
+          { "eu": 44, "intl": "XS", "min_cm": 70, "max_cm": 73, "us": "28-29", "category": "Slim" },
+          { "eu": 48, "intl": "M", "min_cm": 78, "max_cm": 81, "us": "31-32", "category": "Regular" },
+          { "eu": 54, "intl": "XL", "min_cm": 90, "max_cm": 94, "us": "36-38", "category": "Plus" },
+          { "eu": 64, "intl": "4XL", "min_cm": 124, "max_cm": 128, "us": "48-50", "category": "Oversize" },
+          { "eu": 82, "intl": "10XL", "min_cm": 169, "max_cm": 174, "us": "66-68", "category": "Oversize" }
+        ]
       },
-      "women_plus": {
+      "women": {
+        "measure_type": "waist_circumference",
         "data": [
-          { "intl": "3XL", "eu": 48, "waist_min": 94, "waist_max": 101, "hip_max": 123 },
-          { "intl": "4XL", "eu": 50, "waist_min": 102, "waist_max": 109, "hip_max": 130 }
+          { "eu": 32, "intl": "XXS", "min_cm": 58, "max_cm": 61, "us": "0", "category": "Petite" },
+          { "eu": 36, "intl": "S", "min_cm": 66, "max_cm": 69, "us": "4-6", "category": "Regular" },
+          { "eu": 40, "intl": "L", "min_cm": 74, "max_cm": 77, "us": "8-10", "category": "Regular" },
+          { "eu": 48, "intl": "3XL", "min_cm": 94, "max_cm": 101, "us": "18", "category": "Plus" },
+          { "eu": 56, "intl": "5XL", "min_cm": 114, "max_cm": 121, "us": "26", "category": "Oversize" }
         ]
       }
     }

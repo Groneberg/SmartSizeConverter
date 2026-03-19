@@ -12,12 +12,11 @@ class TopsScreen extends StatefulWidget {
 
 class _TopsScreenState extends State<TopsScreen> {
   Gender _selectedGender = Gender.men;
-  
-  // Controller
+
   final TextEditingController _chestController = TextEditingController();
   final TextEditingController _euSizeController = TextEditingController();
   final TextEditingController _intlSizeController = TextEditingController();
-  final TextEditingController _usSizeController = TextEditingController(); // NEU
+  final TextEditingController _usSizeController = TextEditingController();
   String _fitHint = '';
 
   @override
@@ -25,33 +24,44 @@ class _TopsScreenState extends State<TopsScreen> {
     _chestController.dispose();
     _euSizeController.dispose();
     _intlSizeController.dispose();
-    _usSizeController.dispose(); // NEU
+    _usSizeController.dispose();
     super.dispose();
   }
 
   void _updateSizes(String value) {
-    if (value.isEmpty) return;
-    final double? chest = double.tryParse(value.replaceAll(',', '.'));
-    if (chest == null) return;
+    if (value.isEmpty) {
+      _clearFields();
+      return;
+    }
+    final double? cm = double.tryParse(value.replaceAll(',', '.'));
+    if (cm == null) return;
 
-    final result = context.read<SizeConversionService>().convertTops(chest, _selectedGender);
+    final result = context.read<SizeConversionService>().convert(
+      'tops',
+      cm,
+      _selectedGender,
+    );
 
     if (result != null) {
       setState(() {
         _euSizeController.text = result['eu'].toString();
         _intlSizeController.text = result['intl'] ?? '-';
-        _usSizeController.text = result['us']?.toString() ?? '-'; // NEU
-        _fitHint = result['category'] ?? ''; 
+        _usSizeController.text = result['us']?.toString() ?? '-';
+        _fitHint = result['category'] ?? '';
       });
     } else {
-      _clearFields(keepChest: true);
+      _clearFields(keepInput: true);
     }
   }
 
   void _updateFromEu(String value) {
     if (value.isEmpty) return;
 
-    final result = context.read<SizeConversionService>().findByEuSize(value, _selectedGender);
+    final result = context.read<SizeConversionService>().findByEu(
+      'tops',
+      value,
+      _selectedGender,
+    );
 
     if (result != null) {
       setState(() {
@@ -64,9 +74,9 @@ class _TopsScreenState extends State<TopsScreen> {
     }
   }
 
-  void _clearFields({bool keepChest = false}) {
+  void _clearFields({bool keepInput = false}) {
     setState(() {
-      if (!keepChest) _chestController.clear();
+      if (!keepInput) _chestController.clear();
       _euSizeController.clear();
       _intlSizeController.clear();
       _usSizeController.clear();
@@ -79,6 +89,20 @@ class _TopsScreenState extends State<TopsScreen> {
     if (profile?.chestCircumference != null) {
       _chestController.text = profile!.chestCircumference.toString();
       _updateSizes(_chestController.text);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Chest measurement loaded successfully!'),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    } else {
+       ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('No chest measurement found in profile!'),
+          backgroundColor: Colors.redAccent,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
     }
   }
 
@@ -90,21 +114,34 @@ class _TopsScreenState extends State<TopsScreen> {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
-            // Gender Toggle
             SegmentedButton<Gender>(
               segments: const [
-                ButtonSegment(value: Gender.women, label: Text('Women'), icon: Icon(Icons.woman)),
-                ButtonSegment(value: Gender.men, label: Text('Men'), icon: Icon(Icons.man)),
+                ButtonSegment(
+                  value: Gender.women,
+                  label: Text('Women'),
+                  icon: Icon(Icons.woman),
+                ),
+                ButtonSegment(
+                  value: Gender.men,
+                  label: Text('Men'),
+                  icon: Icon(Icons.man),
+                ),
+                ButtonSegment(
+                  value: Gender.kids,
+                  label: Text('Kids'),
+                  icon: Icon(Icons.child_care),
+                ),
               ],
               selected: {_selectedGender},
               onSelectionChanged: (set) {
-                setState(() => _selectedGender = set.first);
+                setState(() {
+                  _selectedGender = set.first;
+                });
                 _updateSizes(_chestController.text);
               },
             ),
             const SizedBox(height: 24),
-            
-            // Profile Button
+
             FilledButton.icon(
               onPressed: _loadFromProfile,
               icon: const Icon(Icons.person),
@@ -119,7 +156,9 @@ class _TopsScreenState extends State<TopsScreen> {
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.straighten),
               ),
-              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+              ),
               onChanged: _updateSizes,
             ),
             const SizedBox(height: 16),
@@ -157,11 +196,16 @@ class _TopsScreenState extends State<TopsScreen> {
               readOnly: true,
             ),
 
-            if (_fitHint.isNotEmpty) 
+            if (_fitHint.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.only(top: 20),
-                child: Text('Note: $_fitHint', 
-                  style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor)),
+                child: Text(
+                  'Note: $_fitHint',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
               ),
           ],
         ),
