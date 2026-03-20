@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BigMenuButton extends StatelessWidget {
-  final IconData icon;
+  final Widget icon;
   final String label;
   final VoidCallback onTap;
 
@@ -16,26 +16,22 @@ class BigMenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(16.0),
+      borderRadius: BorderRadius.circular(16.0), //
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceContainerHighest,
-          borderRadius: BorderRadius.circular(16.0),
+          color: Theme.of(context).colorScheme.surfaceContainerHighest, //
+          borderRadius: BorderRadius.circular(16.0), //
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center, //
           children: [
-            Icon(
-              icon,
-              size: 48.0, 
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            const SizedBox(height: 12.0),
+            icon,
+            const SizedBox(height: 12.0), //
             Text(
               label,
               style: const TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
+                fontSize: 16.0, //
+                fontWeight: FontWeight.bold, //
               ),
             ),
           ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:smart_size_converter/src/core/constants/app_icons.dart'; 
 import 'package:smart_size_converter/src/data/services/shared_preferences_service.dart';
 import 'package:smart_size_converter/src/features/Bottems/screen/bottoms_screen.dart';
 import 'package:smart_size_converter/src/features/Home/widgets/big_menu_button.dart';
@@ -15,6 +17,8 @@ class HomeScreen extends StatelessWidget {
     
     final userRepo = context.watch<SharedPreferencesService>();
     final profile = userRepo.currentProfile;
+
+    final primaryColor = Theme.of(context).colorScheme.primary;
 
     return Scaffold(
       appBar: AppBar(
@@ -35,7 +39,8 @@ class HomeScreen extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 BigMenuButton(
-                  icon: Icons.person,
+                  // Nutze nun das SVG-Widget anstelle von Icons.person
+                  icon: AppIcons.svg(AppIcons.user, size: 48, color: primaryColor),
                   label: 'Profil',
                   onTap: () {
                     Navigator.push(
@@ -47,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 BigMenuButton(
-                  icon: Icons.checkroom, 
+                  icon: AppIcons.svg(AppIcons.shirt, size: 48, color: primaryColor),
                   label: 'Tops',
                   onTap: () {
                     Navigator.push(
@@ -59,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 BigMenuButton(
-                  icon: Icons.accessibility_new,
+                  icon: AppIcons.svg(AppIcons.pants, size: 48, color: primaryColor),
                   label: 'Pants',
                   onTap: () {
                     Navigator.push(
@@ -71,9 +76,9 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 BigMenuButton(
-                  icon: Icons.snowshoeing,
+                  icon: AppIcons.svg(AppIcons.shoes, size: 48, color: primaryColor),
                   label: 'Shoes',
-onTap: () {
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(

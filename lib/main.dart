@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:smart_size_converter/src/data/services/shared_preferences_service.dart';
 import 'package:smart_size_converter/src/data/services/size_conversion_service.dart';
 import 'package:smart_size_converter/src/features/Home/screen/home_screen.dart';
+import 'package:smart_size_converter/src/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +37,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Perfect Fit',
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
       home: const HomeScreen(),
     );
   }
